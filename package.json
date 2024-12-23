@@ -6,17 +6,24 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "alasql": "^4.6.0",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
+    "bcryptjs-react": "^2.4.6",
     "bootstrap": "^5.3.3",
+    "buffer": "^6.0.3",
     "cra-template": "1.2.0",
+    "crypto-browserify": "^3.12.1",
+    "customize-cra": "^1.0.0",
     "gympass-app": "file:",
-    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.0",
     "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -42,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1"
   }
 }
