@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-const secretKey = 'minhaChaveSuperSecreta';
+const secretKey = 'minhaChaveSuperSecreta'; // substitua por uma variavel de ambiente 
 
 export const generateToken = (payload) => {
     //Simples assinatura com um objeto literal usando secret

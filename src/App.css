@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
+
+   /* Add styles on App.css file for adjust layout for margin navbar  */
+   .mt-navbar {
+    margin-top: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Responsive Navbar Layout (example on Mobile)  */
+@media (max-width: 767px) {
+ .navbar-brand {
+   margin-left: 5%; /* Add space  on left side from Logo  (only on mobile) */
+
+     }
+
+ .navbar-nav {
+    margin-left: auto;
+    margin-right: 5%; /* Adjust all button container from menu side  (only on mobile) */
+    }
+
+}
+/* adding classes on bootstrap */
+
+.custom-navbar .dropdown-menu {
+ position: absolute !important;
+   inset: auto auto 0px 0px !important; /* make item show correctlly (without crash outside div container */
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ .dropdown-menu[data-bs-popper] {
+       transform: none !important;/* remove css of javascript library default actions that makes the list goes down instead to side */
 }
