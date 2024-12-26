@@ -62,7 +62,7 @@ if (alasql('SELECT * FROM users WHERE role = "admin"').length === 0) {
 }
 
 
-const db = {
+const database = {
   insertUser: (userData) => {
     const lastId = alasql('SELECT MAX(id) as maxId FROM users')[0].maxId || 0;
     const newId = lastId + 1
@@ -98,4 +98,4 @@ const db = {
   },
   getCheckInsByUserId: (userId) => alasql('SELECT * FROM check_ins WHERE userId = ?', [userId]),
 };
-export default db;
+export default database;
