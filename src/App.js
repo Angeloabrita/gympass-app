@@ -40,7 +40,6 @@ const PrivateRoute = ({ children }) => {
 const App = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
         <AppNavbar />
         <div className='mt-navbar'>
           <Routes>
@@ -49,11 +48,9 @@ const App = () => {
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
             <Route path="/gyms/:id" element={<PrivateRoute><GymDetailPage /></PrivateRoute>} />
             <Route path="/gyms/create" element={<PrivateRoute><CreateGymPage /> </PrivateRoute>} />
-            <Route path="/" element={<HomePage />} />{/* Setting route home at app component for start path for main url of project ("/")   */}
-
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
-      </BrowserRouter>
     </AuthProvider>
   );
 };

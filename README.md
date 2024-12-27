@@ -2,7 +2,12 @@
 
 🎆🎉🎆🎉🎆**Feliz ano novo e boas festas** 🎆🎉🎆🎉🎆
 
+
+
 Este é um projeto desenvolvido como parte de um desafio técnico Fullstack. O objetivo foi criar um aplicativo para gestão de check-ins de academias, simulando um sistema como o Gympass, que permite o uso de academias por meio de assinatura.
+
+**Você pode ver esse app em produção aqui:** https://angeloabrita.github.io/gympass-app/
+
 
 ## Funcionalidades
 
@@ -62,8 +67,9 @@ O aplicativo implementa as seguintes funcionalidades:
 1.  Clone este repositório:
 
    ```bash
-        git clone <URL-DO-SEU-REPOSITORIO>
-    ```
+        git clone https://github.com/Angeloabrita/gympass-app.git
+   ```
+    
 
 2.  Acesse a pasta do projeto:
 
@@ -114,4 +120,8 @@ A aplicação estará disponível em `http://localhost:3000`.
 
 
 ## Autor
-Angelo Abrita - resume: https://angeloabrita.github.io/resume/ | Linkedin: https://www.linkedin.com/in/angelo-gabriel-tavares-abrita/
+Angelo Abrita: 
+
+resume: https://angeloabrita.github.io/resume/ 
+
+Linkedin: https://www.linkedin.com/in/angelo-gabriel-tavares-abrita/
