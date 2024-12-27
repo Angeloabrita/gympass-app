@@ -7,13 +7,12 @@ import ProfilePage from './pages/ProfilePage';
 import GymDetailPage from './pages/GymDetailPage';
 import useAuth from './hooks/useAuth';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'leaflet/dist/leaflet.css';
-import './App.css';
-import AppNavbar from './components/Navbar';
-import CreateGymPage from './pages/CreateGymPage';// Add new route component for CreateGymPage;
+import AppNavbar from './components/Navbar' // Import nav component
+import CreateGymPage from './pages/CreateGymPage';
+import HomePage from './pages/HomePage'
+
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
-
   if (loading) {
     return <p>Carregando...</p>
   }
@@ -24,15 +23,16 @@ const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <AppNavbar />{/* Implement navbar component */}
-        <div className='mt-navbar'>{/* Add styles on css file  ( App.css) and change to div because Router only allow child route elements and divs */}
+        <AppNavbar />
+        <div className='mt-navbar'>
           <Routes>
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
             <Route path="/gyms/:id" element={<PrivateRoute><GymDetailPage /></PrivateRoute>} />
-            <Route path="/gyms/create" element={<PrivateRoute><CreateGymPage /> </PrivateRoute>} /> {/* Add route Create Gym page here and create path with protected path*/}
-            <Route path="/" element={<Navigate to="/auth" />} />
+            <Route path="/gyms/create" element={<PrivateRoute><CreateGymPage /> </PrivateRoute>} />
+            <Route path="/" element={<HomePage />} />{/* Setting route home at app component for start path for main url of project ("/")   */}
+
           </Routes>
         </div>
       </BrowserRouter>
