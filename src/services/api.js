@@ -61,7 +61,7 @@ const api = {
       const existingCheckIn = database.getCheckInsByUserId(data.userId)
         .find(checkIn => new Date(checkIn.date).toISOString().startsWith(today));
       if (existingCheckIn) {
-        throw new Error('You have already checked-in today');
+        throw new Error('Você já fez um check-in hoje');
       }
       // Creating check-in
       const newCheckIn = await database.insertCheckIn({
@@ -77,7 +77,7 @@ const api = {
       // Checking if user is admin
       const userAdmin = await database.getUserById(data?.adminUserId);
       if (!userAdmin || userAdmin?.role !== 'admin') {
-        throw new Error('You do not have permission to perform this action');
+        throw new Error('Você não tem permissão para atualizar o papel de outro usuário');
       }
       // Updating user role
       const updatedUser = await database.updateUserRole(data?.targetUserId, data?.role);
@@ -96,7 +96,7 @@ const api = {
       // Checking if user exists
       const user = await database.getUserById(params?.userId);
       if (!user) {
-        throw new Error('User not found');
+        throw new Error('Usuário não encontrado');
       }
       // Returning user
       return { data: user };

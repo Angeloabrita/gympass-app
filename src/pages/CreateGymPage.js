@@ -7,16 +7,13 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-//fix map bug by setting global L as global variable (needed due  to an icon missing bug from react leaflet);
-
+// Corrige o bug do ícone ausente do Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
-
-
 
 const CreateGymPage = () => {
   const [name, setName] = useState('');
@@ -26,6 +23,7 @@ const CreateGymPage = () => {
   const [error, setError] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
+
   const LocationMarker = () => {
     const map = useMapEvents({
       locationfound(e) {
@@ -58,7 +56,7 @@ const CreateGymPage = () => {
         phone,
         latitude: position.lat,
         longitude: position.lng,
-        userId: user?.id
+        userId: user?.id,
       });
 
       alert(`Academia "${gym?.data?.name}" cadastrada com sucesso!`);
@@ -67,7 +65,6 @@ const CreateGymPage = () => {
       setError(err.message);
     }
   };
-
 
   return (
     <Container className="mt-5">
@@ -104,9 +101,14 @@ const CreateGymPage = () => {
             required
           />
         </Form.Group>
-        <div style={{ height: '400px' }}>{/* map area responsive height adjust to all sizes screen  (required css propertie to render maps);*/}
+        <div style={{ height: '400px', marginBottom: '3rem' }}>
           <p>Marque no mapa a locação da academia</p>
-          <MapContainer center={[-23.5489, -46.6388]} zoom={13} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+          <MapContainer
+            center={[-23.5489, -46.6388]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: '100%', width: '100%' }}
+          >
             <TileLayer
               attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -117,11 +119,14 @@ const CreateGymPage = () => {
 
         {error && <Alert variant="danger">{error}</Alert>}
 
-        <Button variant="primary" type="submit" className='mt-3'>
+
+        <Button variant="primary" type="submit" className='w-100 mb-2'>
           Cadastrar
         </Button>
+
       </Form>
     </Container>
   );
 };
+
 export default CreateGymPage;

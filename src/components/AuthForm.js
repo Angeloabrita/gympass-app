@@ -45,7 +45,7 @@ const AuthForm = ({ isLogin }) => {
         <Form.Control type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </Form.Group>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className="w-100 mt-3">
         {isLogin ? 'Login' : 'Cadastrar'}
       </Button>
     </Form>

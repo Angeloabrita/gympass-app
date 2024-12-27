@@ -104,7 +104,7 @@ const GymDetailPage = () => {
                 </div>
 
                 {checkInError && <p style={{ color: 'red' }}>{checkInError}</p>}
-                <Button variant="primary" onClick={handleCheckIn}>
+                <Button variant="primary" onClick={handleCheckIn}  size="lg" className="w-100 mt-3">
                   Realizar Check-in
                 </Button>
               </Card.Body>

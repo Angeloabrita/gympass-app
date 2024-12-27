@@ -1,59 +1,48 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { verifyToken } from '../utils/jwt';
 export const AuthContext = createContext();
-/**
- * The AuthProvider component is the context provider for the entire app.
- * It holds the current user, whether the user is authenticated or not, and
- * a loading state. It also provides the login and logout functions to the
- * context.
- */
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(undefined); // The current user, will be undefined if the user is not authenticated.
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Whether the user is authenticated or not.
-  const [loading, setLoading] = useState(true); // A loading state, will be true until the user is authenticated or the token is invalid.
-
+  const [user, setUser] = useState(undefined);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       const decodedToken = verifyToken(token);
-
       if (decodedToken) {
-        const localUser = localStorage.getItem('user');  // get the user from local storage, if it exists.
-        const validLocalUser = localUser ? JSON.parse(localUser) : undefined // if the user exists, parse it to a valid object.
-        if (validLocalUser) { // if the user exists and is valid, set it as the current user.
+        const localUser = localStorage.getItem('user'); //retrieve  all object user for persist data for all compoments, by all application
+        const validLocalUser = localUser ? JSON.parse(localUser) : undefined; //if  valid then continue
+
+        if (validLocalUser) { //valid the return type of parsed storage with real user if a type undefined dont set, or if localStorage not used . it also works for prevent bugs if user are clean storege user on console, and a real user exist when component render, it always show data or show default without undefined state causing crach in other parts
 
           setUser(validLocalUser);
         }
+
         setIsAuthenticated(true);
+
+      } else { // if the local storage is invalid, dont render a broken view
+        localStorage.removeItem('token') // invalidate any token by cleaning state on unvalid use cases in any routes, and remove localStorage to prevent inconsistencies to load views with old token after changes;
+
       }
     }
     setLoading(false);
   }, []);
-
-  /**
-   * The login function sets the current user, sets the token in local storage, and
-   * sets the isAuthenticated state to true.
-   * @param {object} userData The user data to be set, should contain name, email, id, and role.
-   * @param {string} token The token to be set in local storage.
-   */
   const login = (userData, token) => {
-    localStorage.setItem('user', JSON.stringify(userData))// set the user in local storage as a string.
-    setUser(userData); // set the current user.
-    localStorage.setItem('token', token); // set the token in local storage.
-
+    localStorage.setItem('user', JSON.stringify(userData)); //update data and state also  localStorage;
+    setUser(userData);
+    localStorage.setItem('token', token);
     setIsAuthenticated(true);
+
 
   };
 
-  /**
-   * The logout function sets the current user to undefined, removes the token
-   * and user from local storage, and sets the isAuthenticated state to false.
-   */
   const logout = () => {
-    setUser(undefined);
+    setUser(undefined); // when use logsout all token  and user should clean store as is no needed on use of  lib or app;
     localStorage.removeItem('token');
-    localStorage.removeItem('user'); // clear all keys as local strategy by removing every local item.
+    localStorage.removeItem('user')// also clean when call action on other states. and set null to force the right behavior of the component as  default state ( when no has users);
     setIsAuthenticated(false);
+
 
   };
 
