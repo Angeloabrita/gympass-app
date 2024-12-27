@@ -106,13 +106,6 @@ A aplicação estará disponível em `http://localhost:3000`.
  *   `App.js`, `index.js`,  Arquivos principal da API do react para rodar a aplicação.
    *`app.css`: Folha principal que tem os style e layouts para  o layout em todo o projeto (em diferentes areas responsivo com classes reutilizadas).
 
-## Notas Importantes
-
-   * Este projeto simula uma API backend e um banco de dados in-memory, pois o objetivo principal é testar as funcionalidades frontend/backend e seus  aspectos logicos .
-    * As requisições que precisavam da lógica de "persistência por sessão" de maneira padrao sao tratadas no componente de Autenticacão   Auth Context usando a estrategia de persistencia `localStorage` do  front
-     * As requisiçoes usam props ( data para post / params url ou header authorization) ou metodos via Context ou componentes via reactDom Router
-        *   Use as telas com responsividade mobile, para usar por em diferentes casos , já estão configuradas e com melhorias ( telas de forms, detailGym, dashboars com map, dropdon na navbar e autenticação em  todos os layouts diferentes (mobile /tablet / pc, widescreen)) , para entender o comportamento do sistema em varios escopos .
-
 ## Próximos Passos
 
 *  Implementar  test unit, testes integração
