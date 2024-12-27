@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gympass-app/static/css/main.22f934d6.css",
-    "main.js": "/gympass-app/static/js/main.0d860de8.js",
+    "main.js": "/gympass-app/static/js/main.3c4c119a.js",
     "index.html": "/gympass-app/index.html",
     "main.22f934d6.css.map": "/gympass-app/static/css/main.22f934d6.css.map",
-    "main.0d860de8.js.map": "/gympass-app/static/js/main.0d860de8.js.map"
+    "main.3c4c119a.js.map": "/gympass-app/static/js/main.3c4c119a.js.map"
   },
   "entrypoints": [
     "static/css/main.22f934d6.css",
-    "static/js/main.0d860de8.js"
+    "static/js/main.3c4c119a.js"
   ]
 }
