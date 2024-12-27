@@ -11,7 +11,7 @@ const HomePage = () => {
                     <p className="lead">Encontre as melhores academias perto de você e mantenha seu corpo ativo!</p>
                 </Col>
                 <Col md={6} className="d-flex align-items-center justify-content-center flex-column text-center ">
-                    <Button as={Link} to="/auth" variant="primary" className="mb-2 w-50 ">
+                    <Button as={Link} to="/auth" variant="primary" className="mb-2 w-50">
                         Login
                     </Button>
                     <Button as={Link} to="/auth?register=true" variant="outline-primary" className="w-50"> {/* send new user path when clicked on link ( with params ? ) */}
