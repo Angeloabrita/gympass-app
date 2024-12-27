@@ -14,12 +14,8 @@ alasql('CREATE LOCALSTORAGE DATABASE IF NOT EXISTS gymdb;\
   alasql.promise('CREATE TABLE IF NOT EXISTS check_ins (id INT, userId INT, gymId INT, date DATETIME)');
 });
 alasql.options.errorlog = true;
-// Inicialização do banco de dados AlaSQL
-// alasql('CREATE TABLE users (id INT, name STRING, email STRING, password STRING)');
-// alasql('CREATE TABLE gyms (id INT, name STRING, description STRING, phone STRING, latitude FLOAT, longitude FLOAT)');
-// alasql('CREATE TABLE check_ins (id INT, userId INT, gymId INT, date DATETIME)');
 
-// Inicialização das Academias (opcional)
+// Initialize the gyms table (opcional)
 if (alasql('SELECT * FROM gyms').length === 0) {
   alasql("INSERT INTO gyms VALUES(1, 'Academia Alpha', 'Ótima academia para treinos avançados', '52999068801', -23.550520, -46.633308)"); // São Paulo
   alasql("INSERT INTO gyms VALUES(2, 'Academia Beta', 'Academia com foco em musculação', '52999068802', -22.906847, -43.172897)"); // Rio de Janeiro
@@ -53,7 +49,7 @@ if (alasql('SELECT * FROM gyms').length === 0) {
   alasql("INSERT INTO gyms VALUES(30, 'Academia Apolo', 'Ótima infraestrutura e equipamentos modernos', '52999068830', -8.056700, -34.951000)"); // Olinda
 }
 
-// Criar um usuario admin padrao, caso nao tenha nenhum usuario
+// Criate default admin
 if (alasql('SELECT * FROM users WHERE role = "admin"').length === 0) {
   const lastId = alasql('SELECT MAX(id) as maxId FROM users')[0].maxId || 0;
   const newId = lastId + 1
@@ -61,7 +57,7 @@ if (alasql('SELECT * FROM users WHERE role = "admin"').length === 0) {
   alasql('INSERT INTO users VALUES(?, ?, ?, ?, ?)', [newId, 'Admin User', 'admin@gympass.com', hashedPassword, 'admin']);
 }
 
-
+//simulate database model and data in localstorage
 const database = {
   insertUser: (userData) => {
     const lastId = alasql('SELECT MAX(id) as maxId FROM users')[0].maxId || 0;

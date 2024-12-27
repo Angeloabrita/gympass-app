@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const AppNavbar = () => {
    const { user, isAuthenticated, logout } = useAuth();
-   console.log(user);
    const navigate = useNavigate();
    const handleLogout = () => {
       logout();

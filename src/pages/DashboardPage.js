@@ -13,7 +13,7 @@ const DashboardPage = () => {
    const [searchQuery, setSearchQuery] = useState('');
    const [currentPage, setCurrentPage] = useState(1);
    const [totalPages, setTotalPages] = useState(1);
-   const { user, isAuthenticated } = useAuth();
+   const { isAuthenticated } = useAuth();
    const navigate = useNavigate();
 
    const fetchGyms = useCallback(async () => {

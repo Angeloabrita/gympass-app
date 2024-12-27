@@ -11,6 +11,15 @@ import AppNavbar from './components/Navbar' // Import nav component
 import CreateGymPage from './pages/CreateGymPage';
 import HomePage from './pages/HomePage'
 
+/**
+ * PrivateRoute
+ * 
+ * This component is a wrapper around the Route component from react-router-dom.
+ * It checks if the user is authenticated and if the authentication is still loading.
+ * If the user is authenticated, it renders the children component. Otherwise, it redirects the user to the /auth page.
+ * 
+ * @param {React.ReactNode} children the component to render if the user is authenticated
+ */
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) {
@@ -19,6 +28,15 @@ const PrivateRoute = ({ children }) => {
   return isAuthenticated ? children : <Navigate to="/auth" />;
 };
 
+/**
+ * App
+ * 
+ * The main component of the application. It renders the AppNavbar and a div with the class 'mt-navbar' that contains the Routes
+ * component. The Routes component renders the correct page based on the current path.
+ * The PrivateRoute component is used to protect the routes that require authentication. If the user is not authenticated, it redirects
+ * the user to the /auth page.
+ * The AppProvider component is used to provide the authentication context to all the components in the application.
+ */
 const App = () => {
   return (
     <AuthProvider>

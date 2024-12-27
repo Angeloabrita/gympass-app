@@ -15,10 +15,10 @@ const AuthForm = ({ isLogin }) => {
     e.preventDefault();
     setError(null);
     try {
-        const payload = { email, password }
+      const payload = { email, password }
 
-      if(!isLogin) {
-          payload.name = name
+      if (!isLogin) {
+        payload.name = name
       }
       const response = await api.post(isLogin ? '/auth/login' : '/auth/register', payload);
       login(response.data.user, response.data.token);
